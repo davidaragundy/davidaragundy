@@ -13,11 +13,13 @@ export default async function Image() {
     (
       <div
         style={{
+          fontFamily:
+            "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
           fontSize: 128,
           background: "#111",
           color: "#fff",
           textAlign: "center",
-          fontWeight: "bold",
+          fontWeight: 900,
           width: "100%",
           height: "100%",
           display: "flex",
