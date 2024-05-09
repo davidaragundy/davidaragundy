@@ -11,9 +11,6 @@ const ubuntu = Ubuntu({
 export const metadata: Metadata = {
   title: "David Aragundy",
   description: "My amazing portfolio 🤙",
-  openGraph: {
-    images: "/opengraph-image.tsx",
-  },
   robots: {
     index: true,
     follow: true,
