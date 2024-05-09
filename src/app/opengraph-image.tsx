@@ -15,7 +15,9 @@ export default async function Image() {
         style={{
           fontSize: 128,
           background: "#111",
-
+          color: "#fff",
+          textAlign: "center",
+          fontWeight: "bold",
           width: "100%",
           height: "100%",
           display: "flex",
