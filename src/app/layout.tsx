@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Ubuntu } from "next/font/google";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
@@ -32,7 +31,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={ubuntu.className}>
         {children}
-        <SpeedInsights />
         <Analytics />
       </body>
     </html>
