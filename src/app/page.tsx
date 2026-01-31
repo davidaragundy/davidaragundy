@@ -1,10 +1,12 @@
-import { kv } from "@vercel/kv";
+import { Redis } from "@upstash/redis";
 import Link from "next/link";
+
+const redis = Redis.fromEnv();
 
 export const revalidate = 0;
 
 export default async function Home() {
-  const views = await kv.incr("views");
+  const views = await redis.incr("views");
 
   return (
     <main className="flex relative w-full min-h-screen flex-wrap place-content-center">
