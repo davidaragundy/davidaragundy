@@ -22,10 +22,10 @@ export default async function Home() {
         <h2 className="font-bold text-7xl">
           Go and check{" "}
           <Link
-            href={"https://stories.aragundy.com"}
+            href={"https://twittesia.aragundy.com"}
             className="text-blue-800 hover:underline"
           >
-            stories
+            twittesia
           </Link>
           🚀
         </h2>

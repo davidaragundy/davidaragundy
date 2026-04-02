@@ -35,7 +35,12 @@
 
 ###
 
-<p align="left">I'm David Aragundy from Ecuador<br><br>- 📚 I'm currently studying computer science<br>- ⚡ In my free time I make some code for davidaragundy/stories</p>
+<p align="left">
+  I'm David Aragundy from Ecuador<br><br>
+  - 📚 I'm currently studying computer science<br>
+  - ⚡ In my free time I make some code for 
+  <a href="https://github.com/davidaragundy/twittesia" target="_blank">davidaragundy/twittesia</a>
+</p>
 
 ###
 
