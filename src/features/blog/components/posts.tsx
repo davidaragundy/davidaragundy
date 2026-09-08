@@ -7,21 +7,23 @@ export const Posts = async () => {
   const posts = await getPosts();
 
   return (
-    <div>
+    <div className="flex flex-col gap-4">
       {posts.map((post) => (
         <Link
           key={post.slug}
-          className="mb-4 flex flex-col space-y-1"
+          className="flex flex-col gap-1 md:flex-row md:items-baseline md:gap-4"
           href={`/blog/${post.slug}`}
         >
-          <div className="flex w-full flex-col space-x-0 md:flex-row md:space-x-2">
-            <p className="w-25 text-neutral-600 tabular-nums dark:text-neutral-400">
-              {formatDate(post.metadata.publishedAt)}
-            </p>
-            <p className="tracking-tight text-neutral-900 dark:text-neutral-100">
-              {post.metadata.title}
-            </p>
-          </div>
+          <time
+            dateTime={post.metadata.publishedAt}
+            className="shrink-0 text-sm whitespace-nowrap text-neutral-600 tabular-nums md:w-36 dark:text-neutral-400"
+          >
+            {formatDate(post.metadata.publishedAt)}
+          </time>
+
+          <span className="tracking-tight text-neutral-900 dark:text-neutral-100">
+            {post.metadata.title}
+          </span>
         </Link>
       ))}
     </div>

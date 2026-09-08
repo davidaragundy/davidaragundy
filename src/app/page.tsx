@@ -19,7 +19,6 @@ export default function Page() {
           name: AUTHOR_NAME,
           url: BASE_URL,
           description: SITE_DESCRIPTION,
-          jobTitle: "Software Engineer",
           sameAs: [GITHUB_URL, X_URL],
         }}
       />

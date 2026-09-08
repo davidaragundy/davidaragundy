@@ -19,7 +19,7 @@ export const GITHUB_URL = "https://github.com/davidaragundy";
 export const SITE_NAME = "David Aragundy";
 
 export const SITE_DESCRIPTION =
-  "Software engineer. I like to think I know how to build stuff, and occasionally it actually works.";
+  "I like to think I know how to build stuff, and occasionally it actually works.";
 
 export const BLOG_TITLE = "Blog";
 
