@@ -34,7 +34,9 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <section>
-      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">My Blog</h1>
+      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
+        the blog, or whatever
+      </h1>
 
       <Posts />
     </section>
