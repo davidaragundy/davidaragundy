@@ -2,6 +2,8 @@ import type { Route } from "next";
 
 export const BASE_URL = "https://davidaragundy.com";
 
+export const SITE_DOMAIN = "davidaragundy.com";
+
 export const AUTHOR_NAME = "David Aragundy";
 
 export const AUTHOR_INITIALS = "DA";
@@ -18,6 +20,10 @@ export const SITE_NAME = "David Aragundy";
 
 export const SITE_DESCRIPTION =
   "Software engineer. I like to think I know how to build stuff, and occasionally it actually works.";
+
+export const BLOG_TITLE = "Blog";
+
+export const BLOG_DESCRIPTION = "Things I wrote down before I forgot them.";
 
 export const SITE_LOCALE = "en_US";
 

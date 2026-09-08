@@ -5,7 +5,7 @@ import {
   OG_SIZE,
   OGImage,
 } from "@/shared/components/og-image";
-import { SITE_NAME } from "@/shared/constants/app";
+import { SITE_DESCRIPTION, SITE_NAME } from "@/shared/constants/app";
 import { loadOGFonts } from "@/shared/utils/load-og-fonts";
 
 import { getPost, getPosts } from "@/features/blog/queries/get-posts";
@@ -29,7 +29,10 @@ export default async function Image({
   const post = await getPost(slug);
 
   return new ImageResponse(
-    <OGImage title={post?.metadata.title ?? SITE_NAME} footer={SITE_NAME} />,
+    <OGImage
+      title={post?.metadata.title ?? SITE_NAME}
+      description={post?.metadata.summary ?? SITE_DESCRIPTION}
+    />,
     { ...size, fonts: await loadOGFonts() },
   );
 }

@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
 
-import { SITE_LOCALE, SITE_NAME, X_HANDLE } from "@/shared/constants/app";
+import {
+  BLOG_DESCRIPTION,
+  BLOG_TITLE,
+  SITE_LOCALE,
+  SITE_NAME,
+  X_HANDLE,
+} from "@/shared/constants/app";
 
 import { Posts } from "@/features/blog/components/posts";
 
-const title = "Blog";
-const description = "Things I wrote down before I forgot them.";
-
 export const metadata: Metadata = {
-  title,
-  description,
+  title: BLOG_TITLE,
+  description: BLOG_DESCRIPTION,
   alternates: { canonical: "/blog" },
   openGraph: {
-    title,
-    description,
+    title: BLOG_TITLE,
+    description: BLOG_DESCRIPTION,
     type: "website",
     url: "/blog",
     siteName: SITE_NAME,
@@ -21,8 +24,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title,
-    description,
+    title: BLOG_TITLE,
+    description: BLOG_DESCRIPTION,
     site: X_HANDLE,
     creator: X_HANDLE,
   },
