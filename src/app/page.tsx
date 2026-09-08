@@ -34,6 +34,12 @@ export default function Page() {
         profiles to see the proof (or the wreckage).`}
       </p>
 
+      <p className="mb-4">
+        regards, or whatever,
+        <br />
+        David Aragundy
+      </p>
+
       <div className="my-8">
         <Posts />
       </div>
