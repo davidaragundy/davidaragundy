@@ -47,7 +47,7 @@ export default function Page() {
       </p>
 
       <p className="mb-4">
-        regards, or whatever,
+        regards,
         <br />
         David Aragundy
       </p>
