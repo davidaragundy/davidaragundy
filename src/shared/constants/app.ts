@@ -20,7 +20,7 @@ export const GITHUB_URL = "https://github.com/davidaragundy";
 
 export const LINKEDIN_URL = "https://www.linkedin.com/in/davidaragundy/";
 
-export const EMAIL = "david@aragundy.com";
+export const EMAIL = "hi@aragundy.com";
 
 export const SITE_NAME = "David Aragundy";
 
