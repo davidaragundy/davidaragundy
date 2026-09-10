@@ -1,11 +1,10 @@
 import { JsonLd } from "@/shared/components/json-ld";
+import { AUTHOR_USERNAME, BASE_URL, SITE_NAME } from "@/shared/constants/app";
 import {
-  AUTHOR_NAME,
-  BASE_URL,
-  GITHUB_URL,
-  SITE_DESCRIPTION,
-  X_URL,
-} from "@/shared/constants/app";
+  PERSON_ID,
+  PERSON_SCHEMA,
+  WEBSITE_ID,
+} from "@/shared/constants/schema";
 
 import { Posts } from "@/features/blog/components/posts";
 
@@ -15,11 +14,24 @@ export default function Page() {
       <JsonLd
         data={{
           "@context": "https://schema.org",
-          "@type": "Person",
-          name: AUTHOR_NAME,
-          url: BASE_URL,
-          description: SITE_DESCRIPTION,
-          sameAs: [GITHUB_URL, X_URL],
+          "@graph": [
+            {
+              "@type": "WebSite",
+              "@id": WEBSITE_ID,
+              url: BASE_URL,
+              name: SITE_NAME,
+              alternateName: AUTHOR_USERNAME,
+              publisher: { "@id": PERSON_ID },
+            },
+            {
+              "@type": "ProfilePage",
+              url: BASE_URL,
+              name: SITE_NAME,
+              isPartOf: { "@id": WEBSITE_ID },
+              mainEntity: { "@id": PERSON_ID },
+            },
+            PERSON_SCHEMA,
+          ],
         }}
       />
 

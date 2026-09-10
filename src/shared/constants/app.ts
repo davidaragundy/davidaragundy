@@ -6,6 +6,8 @@ export const SITE_DOMAIN = "davidaragundy.com";
 
 export const AUTHOR_NAME = "David Aragundy";
 
+export const AUTHOR_USERNAME = "davidaragundy";
+
 export const AUTHOR_INITIALS = "DA";
 
 export const AVATAR_URL = "/pfp.jpeg";
@@ -25,9 +27,15 @@ export const BLOG_TITLE = "Blog";
 
 export const BLOG_DESCRIPTION = "Things I wrote down before I forgot them.";
 
+export const PROJECTS_TITLE = "Projects";
+
+export const PROJECTS_DESCRIPTION =
+  "Things I've built, and a few I'm still building.";
+
 export const SITE_LOCALE = "en_US";
 
 export const navItems: { href: Route; name: string }[] = [
   { href: "/", name: "home" },
   { href: "/blog", name: "blog" },
+  { href: "/projects", name: "projects" },
 ];

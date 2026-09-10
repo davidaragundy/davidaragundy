@@ -11,6 +11,7 @@ import {
   SITE_NAME,
   X_HANDLE,
 } from "@/shared/constants/app";
+import { PERSON_REFERENCE } from "@/shared/constants/schema";
 
 import { CustomMDX } from "@/features/blog/components/custom-mdx";
 import { getPost, getPosts } from "@/features/blog/queries/get-posts";
@@ -79,13 +80,8 @@ export default async function Page(props: PageProps<"/blog/[slug]">) {
           description: summary,
           image: `${BASE_URL}/blog/${slug}/opengraph-image`,
           url: `${BASE_URL}/blog/${slug}`,
-          author: {
-            "@type": "Person",
-            name: AUTHOR_NAME,
-            url: BASE_URL,
-            image: `${BASE_URL}${AVATAR_URL}`,
-          },
-          publisher: { "@type": "Person", name: AUTHOR_NAME, url: BASE_URL },
+          author: PERSON_REFERENCE,
+          publisher: PERSON_REFERENCE,
           mainEntityOfPage: {
             "@type": "WebPage",
             "@id": `${BASE_URL}/blog/${slug}`,

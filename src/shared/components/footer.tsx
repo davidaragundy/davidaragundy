@@ -1,28 +1,26 @@
-import { ArrowIcon } from "@/shared/icons/arrow-icon";
 import { GITHUB_URL, X_URL } from "@/shared/constants/app";
+import { ArrowIcon } from "@/shared/icons/arrow-icon";
 
 const links = [
-  { href: "/rss", label: "rss", external: false },
-  { href: GITHUB_URL, label: "github", external: true },
-  { href: X_URL, label: "x", external: true },
+  { href: "/rss", label: "rss" },
+  { href: GITHUB_URL, label: "github", rel: "me noopener noreferrer" },
+  { href: X_URL, label: "x", rel: "me noopener noreferrer" },
   {
     href: `${GITHUB_URL}/davidaragundy`,
     label: "view source",
-    external: true,
+    rel: "noopener noreferrer",
   },
 ];
 
 export const Footer = () => (
   <footer className="mb-16">
     <ul className="font-sm mt-8 flex flex-col space-y-2 space-x-0 text-neutral-600 md:flex-row md:space-y-0 md:space-x-4 dark:text-neutral-300">
-      {links.map(({ href, label, external }) => (
+      {links.map(({ href, label, rel }) => (
         <li key={href}>
           <a
             className="flex items-center transition-all hover:text-neutral-800 dark:hover:text-neutral-100"
             href={href}
-            {...(external
-              ? { target: "_blank", rel: "noopener noreferrer" }
-              : {})}
+            {...(rel ? { target: "_blank", rel } : {})}
           >
             <ArrowIcon />
             <p className="ml-2 h-7">{label}</p>
