@@ -18,6 +18,10 @@ export const X_URL = "https://x.com/davidaragundy";
 
 export const GITHUB_URL = "https://github.com/davidaragundy";
 
+export const LINKEDIN_URL = "https://www.linkedin.com/in/davidaragundy/";
+
+export const EMAIL = "david@aragundy.com";
+
 export const SITE_NAME = "David Aragundy";
 
 export const SITE_DESCRIPTION =

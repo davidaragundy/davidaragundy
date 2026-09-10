@@ -16,7 +16,7 @@ export const projects: Project[] = [
     repository: "https://github.com/Taws-Espol/taws-website",
   },
   {
-    name: "twittesia",
+    name: "Twittesia",
     description:
       "A Twitter-like social network where every post, comment and chat disappears after 24 hours.",
     url: "https://twittesia.aragundy.com",

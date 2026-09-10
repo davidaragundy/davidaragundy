@@ -3,7 +3,9 @@ import {
   AUTHOR_USERNAME,
   AVATAR_URL,
   BASE_URL,
+  EMAIL,
   GITHUB_URL,
+  LINKEDIN_URL,
   SITE_DESCRIPTION,
   X_URL,
 } from "@/shared/constants/app";
@@ -20,7 +22,8 @@ export const PERSON_SCHEMA = {
   url: BASE_URL,
   image: `${BASE_URL}${AVATAR_URL}`,
   description: SITE_DESCRIPTION,
-  sameAs: [GITHUB_URL, X_URL],
+  email: EMAIL,
+  sameAs: [GITHUB_URL, X_URL, LINKEDIN_URL],
 };
 
 export const PERSON_REFERENCE = {

@@ -1,10 +1,12 @@
-import { GITHUB_URL, X_URL } from "@/shared/constants/app";
+import { EMAIL, GITHUB_URL, LINKEDIN_URL, X_URL } from "@/shared/constants/app";
 import { ArrowIcon } from "@/shared/icons/arrow-icon";
 
 const links = [
   { href: "/rss", label: "rss" },
   { href: GITHUB_URL, label: "github", rel: "me noopener noreferrer" },
   { href: X_URL, label: "x", rel: "me noopener noreferrer" },
+  { href: LINKEDIN_URL, label: "linkedin", rel: "me noopener noreferrer" },
+  { href: `mailto:${EMAIL}`, label: "email" },
   {
     href: `${GITHUB_URL}/davidaragundy`,
     label: "view source",
