@@ -1,3 +1,4 @@
+import fs from "fs/promises";
 import path from "path";
 
 import type { PostSummary } from "@/features/blog/types/post-summary";
@@ -33,4 +34,12 @@ export const getPostSummaries = async (): Promise<PostSummary[]> => {
     publishedAt: metadata.publishedAt,
     tags: metadata.tags,
   }));
+};
+
+export const getRawPost = async (slug: string) => {
+  const posts = await getPosts();
+
+  if (!posts.some((post) => post.slug === slug)) return null;
+
+  return fs.readFile(path.join(POSTS_DIR, `${slug}.mdx`), "utf-8");
 };
