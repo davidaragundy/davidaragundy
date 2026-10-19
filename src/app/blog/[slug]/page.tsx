@@ -112,7 +112,7 @@ export default async function Page(props: PageProps<"/blog/[slug]">) {
       </nav>
 
       <header className="mt-6 flex flex-col gap-6">
-        <h1 className="title text-4xl leading-[1.1] font-semibold tracking-tight md:text-5xl">
+        <h1 className="title text-4xl leading-[1.1] font-[450] tracking-[-0.06em] md:text-5xl">
           {title}
         </h1>
 

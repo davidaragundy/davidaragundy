@@ -17,7 +17,7 @@ export default function Error({
 
   return (
     <section className="flex flex-col items-start gap-4 py-16">
-      <h1 className="title text-3xl font-semibold tracking-tight md:text-4xl">
+      <h1 className="title text-3xl leading-[1.1] font-[450] tracking-[-0.06em] md:text-4xl">
         something broke
       </h1>
 

@@ -45,7 +45,7 @@ export default async function Page() {
       />
 
       <section className="flex max-w-2xl flex-col gap-6">
-        <h1 className="title text-4xl font-semibold tracking-tight md:text-5xl">
+        <h1 className="title text-4xl leading-[1.1] font-[450] tracking-[-0.06em] md:text-5xl">
           i do and build stuff. results may vary.
         </h1>
 

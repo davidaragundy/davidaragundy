@@ -38,7 +38,7 @@ export default async function Page() {
   return (
     <section className="flex flex-col gap-10">
       <header className="flex flex-col gap-3">
-        <h1 className="title text-4xl font-semibold tracking-tight md:text-5xl">
+        <h1 className="title text-4xl leading-[1.1] font-[450] tracking-[-0.06em] md:text-5xl">
           the blog, or whatever
         </h1>
 

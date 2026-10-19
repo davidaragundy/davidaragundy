@@ -12,7 +12,7 @@ export default function NotFound() {
     <section className="flex flex-col items-start gap-4 py-16">
       <p className="text-muted-foreground font-mono text-sm">404</p>
 
-      <h1 className="title text-3xl font-semibold tracking-tight md:text-4xl">
+      <h1 className="title text-3xl leading-[1.1] font-[450] tracking-[-0.06em] md:text-4xl">
         this page does not exist
       </h1>
 
@@ -20,7 +20,12 @@ export default function NotFound() {
         The link is wrong, or I deleted something I probably should not have.
       </p>
 
-      <Button variant="outline" render={<Link href="/" />} className="mt-2">
+      <Button
+        variant="outline"
+        nativeButton={false}
+        render={<Link href="/" />}
+        className="mt-2 cursor-pointer"
+      >
         go home
       </Button>
     </section>

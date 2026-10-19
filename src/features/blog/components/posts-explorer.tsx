@@ -101,6 +101,7 @@ export const PostsExplorer = ({ posts }: { posts: PostSummary[] }) => {
           <Button
             size="icon"
             variant="outline"
+            nativeButton={false}
             render={<a href="/rss" aria-label="RSS feed" />}
             className="cursor-pointer rounded-full"
           >
@@ -116,9 +117,9 @@ export const PostsExplorer = ({ posts }: { posts: PostSummary[] }) => {
           </p>
         </div>
       ) : view === "grid" ? (
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-6 sm:grid-cols-2">
           {visiblePosts.map((post) => (
-            <PostCard key={post.slug} post={post} className="min-h-72" />
+            <PostCard key={post.slug} post={post} className="min-h-96" />
           ))}
         </div>
       ) : (
