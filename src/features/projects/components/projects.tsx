@@ -11,7 +11,7 @@ export const Projects = () => (
   <ul className="grid gap-6 sm:grid-cols-2">
     {projects.map(({ name, description, url, repository }) => (
       <li key={url}>
-        <Card className="hover:bg-card-hover flex h-full flex-col gap-0 rounded-xl p-6 transition-colors duration-200 sm:p-8">
+        <Card className="hover:bg-card-hover flex h-full flex-col gap-0 rounded-sm p-6 pb-8 transition-colors duration-150">
           <h2 className="text-2xl leading-8 font-[450] tracking-[-0.04em]">
             {name}
           </h2>

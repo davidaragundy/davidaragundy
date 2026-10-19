@@ -17,7 +17,7 @@ export const PostCard = ({
 }) => (
   <Card
     className={cn(
-      "group hover:bg-card-hover relative flex h-full flex-col gap-0 rounded-sm border-0 p-6 pb-8 transition-colors duration-150",
+      "group hover:bg-card-hover relative flex h-full flex-col gap-0 rounded-sm p-6 pb-8 transition-colors duration-150",
       className,
     )}
   >
