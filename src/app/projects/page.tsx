@@ -33,10 +33,14 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <section>
-      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        the proof, or the wreckage
-      </h1>
+    <section className="flex flex-col gap-10">
+      <header className="flex flex-col gap-3">
+        <h1 className="title text-4xl font-semibold tracking-tight md:text-5xl">
+          the proof, or the wreckage
+        </h1>
+
+        <p className="text-muted-foreground max-w-xl">{PROJECTS_DESCRIPTION}</p>
+      </header>
 
       <Projects />
     </section>

@@ -21,7 +21,7 @@ export const OGImage = ({
       display: "flex",
       flexDirection: "column",
       justifyContent: "space-between",
-      background: "#ffffff",
+      background: "#0a0a0a",
       fontFamily: "Geist",
       padding: 80,
     }}
@@ -34,7 +34,7 @@ export const OGImage = ({
           fontWeight: 700,
           letterSpacing: -2,
           lineHeight: 1.15,
-          color: "#000000",
+          color: "#fafafa",
         }}
       >
         {truncate(title, 80)}
@@ -46,7 +46,7 @@ export const OGImage = ({
           marginTop: 28,
           fontSize: 30,
           lineHeight: 1.4,
-          color: "#525252",
+          color: "#a1a1a1",
         }}
       >
         {truncate(description, 140)}

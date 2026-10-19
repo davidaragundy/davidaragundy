@@ -18,6 +18,8 @@ export const X_URL = "https://x.com/davidaragundy";
 
 export const GITHUB_URL = "https://github.com/davidaragundy";
 
+export const REPOSITORY_URL = "https://github.com/davidaragundy/davidaragundy";
+
 export const LINKEDIN_URL = "https://www.linkedin.com/in/davidaragundy/";
 
 export const EMAIL = "hi@aragundy.com";

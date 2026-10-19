@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
 
+import { Badge } from "@/shared/components/ui/badge";
+import { Separator } from "@/shared/components/ui/separator";
 import { JsonLd } from "@/shared/components/json-ld";
 import {
   AUTHOR_NAME,
@@ -69,7 +73,7 @@ export default async function Page(props: PageProps<"/blog/[slug]">) {
   const { title, publishedAt, summary } = post.metadata;
 
   return (
-    <section>
+    <section className="mx-auto flex w-full max-w-2xl flex-col">
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -78,6 +82,7 @@ export default async function Page(props: PageProps<"/blog/[slug]">) {
           datePublished: publishedAt,
           dateModified: publishedAt,
           description: summary,
+          keywords: post.metadata.tags,
           image: `${BASE_URL}/blog/${slug}/opengraph-image`,
           url: `${BASE_URL}/blog/${slug}`,
           author: PERSON_REFERENCE,
@@ -89,30 +94,51 @@ export default async function Page(props: PageProps<"/blog/[slug]">) {
         }}
       />
 
-      <h1 className="title text-2xl font-semibold tracking-tighter">{title}</h1>
+      <Link
+        href="/blog"
+        className="text-muted-foreground hover:text-foreground inline-flex w-fit items-center gap-1.5 text-sm transition-colors"
+      >
+        <ArrowLeft className="size-3.5" />
+        all posts
+      </Link>
 
-      <div className="mt-4 mb-8 flex items-center gap-2 text-sm">
-        <Image
-          src={AVATAR_URL}
-          alt=""
-          width={28}
-          height={28}
-          className="size-7 rounded-full object-cover"
-        />
+      <header className="mt-8 flex flex-col gap-4">
+        {post.metadata.tags.length > 0 ? (
+          <div className="flex flex-wrap gap-2">
+            {post.metadata.tags.map((tag) => (
+              <Badge key={tag} variant="secondary">
+                {tag}
+              </Badge>
+            ))}
+          </div>
+        ) : null}
 
-        <span className="text-neutral-900 dark:text-neutral-100">
-          {AUTHOR_NAME}
-        </span>
+        <h1 className="title text-3xl font-semibold tracking-tight md:text-4xl">
+          {title}
+        </h1>
 
-        <span className="text-neutral-400 dark:text-neutral-600">·</span>
+        <p className="text-muted-foreground text-lg leading-8">{summary}</p>
 
-        <time
-          dateTime={publishedAt}
-          className="text-neutral-600 dark:text-neutral-400"
-        >
-          {formatDate(publishedAt)}
-        </time>
-      </div>
+        <div className="mt-2 flex items-center gap-2 text-sm">
+          <Image
+            src={AVATAR_URL}
+            alt=""
+            width={28}
+            height={28}
+            className="size-7 rounded-full object-cover"
+          />
+
+          <span className="text-foreground">{AUTHOR_NAME}</span>
+
+          <span className="text-muted-foreground/50">·</span>
+
+          <time dateTime={publishedAt} className="text-muted-foreground">
+            {formatDate(publishedAt)}
+          </time>
+        </div>
+      </header>
+
+      <Separator className="my-10" />
 
       <article className="prose">
         <CustomMDX source={post.content} />

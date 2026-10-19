@@ -1,43 +1,54 @@
-import { ArrowIcon } from "@/shared/icons/arrow-icon";
+import { ArrowUpRight } from "lucide-react";
+
+import {
+  Card,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/shared/components/ui/card";
 
 import { projects } from "@/features/projects/data/projects";
 
 const linkClassName =
-  "flex items-center gap-2 transition-all hover:text-neutral-800 dark:hover:text-neutral-100";
+  "inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground";
 
 export const Projects = () => (
-  <ul className="flex flex-col gap-8">
+  <ul className="grid gap-4 sm:grid-cols-2">
     {projects.map(({ name, description, url, repository }) => (
-      <li key={url} className="flex flex-col gap-1">
-        <h2 className="font-medium tracking-tight text-neutral-900 dark:text-neutral-100">
-          {name}
-        </h2>
+      <li key={url}>
+        <Card className="h-full">
+          <CardHeader className="gap-2">
+            <CardTitle className="text-lg tracking-tight">{name}</CardTitle>
+            <CardDescription className="leading-6">
+              {description}
+            </CardDescription>
+          </CardHeader>
 
-        <p className="text-neutral-600 dark:text-neutral-400">{description}</p>
-
-        <div className="mt-1 flex gap-4 text-sm text-neutral-600 dark:text-neutral-300">
-          <a
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={linkClassName}
-          >
-            <ArrowIcon />
-            {new URL(url).hostname}
-          </a>
-
-          {repository ? (
+          <CardFooter className="gap-4">
             <a
-              href={repository}
+              href={url}
               target="_blank"
               rel="noopener noreferrer"
               className={linkClassName}
             >
-              <ArrowIcon />
-              source
+              {new URL(url).hostname}
+              <ArrowUpRight className="size-3.5" />
             </a>
-          ) : null}
-        </div>
+
+            {repository ? (
+              <a
+                href={repository}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={linkClassName}
+              >
+                source
+                <ArrowUpRight className="size-3.5" />
+              </a>
+            ) : null}
+          </CardFooter>
+        </Card>
       </li>
     ))}
   </ul>

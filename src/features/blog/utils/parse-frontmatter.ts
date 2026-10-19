@@ -4,6 +4,8 @@ const FRONTMATTER_REGEX = /---\s*([\s\S]*?)\s*---/;
 
 const REQUIRED_KEYS = ["title", "publishedAt", "summary"] as const;
 
+const unquote = (value: string) => value.replace(/^['"](.*)['"]$/, "$1");
+
 export const parseFrontmatter = (fileContent: string) => {
   const frontmatterBlock = FRONTMATTER_REGEX.exec(fileContent)?.[1];
 
@@ -12,24 +14,40 @@ export const parseFrontmatter = (fileContent: string) => {
   }
 
   const content = fileContent.replace(FRONTMATTER_REGEX, "").trim();
-  const metadata: Partial<PostMetadata> = {};
+  const entries: Record<string, string> = {};
 
   for (const line of frontmatterBlock.trim().split("\n")) {
     const [key, ...valueParts] = line.split(": ");
 
     if (!key || valueParts.length === 0) continue;
 
-    metadata[key.trim() as keyof PostMetadata] = valueParts
-      .join(": ")
-      .trim()
-      .replace(/^['"](.*)['"]$/, "$1");
+    entries[key.trim()] = unquote(valueParts.join(": ").trim());
   }
 
-  for (const key of REQUIRED_KEYS) {
-    if (!metadata[key]) {
-      throw new Error(`Post frontmatter is missing "${key}".`);
-    }
+  const missing = REQUIRED_KEYS.filter((key) => !entries[key]);
+
+  if (missing.length > 0) {
+    throw new Error(`Post frontmatter is missing: ${missing.join(", ")}.`);
   }
 
-  return { metadata: metadata as PostMetadata, content };
+  const { title, publishedAt, summary } = entries as Record<
+    (typeof REQUIRED_KEYS)[number],
+    string
+  >;
+
+  const tags = (entries.tags ?? "")
+    .replace(/^\[(.*)\]$/, "$1")
+    .split(",")
+    .map((tag) => unquote(tag.trim()))
+    .filter(Boolean);
+
+  const metadata: PostMetadata = {
+    title,
+    publishedAt,
+    summary,
+    tags,
+    ...(entries.image ? { image: entries.image } : {}),
+  };
+
+  return { metadata, content };
 };

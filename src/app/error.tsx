@@ -2,6 +2,8 @@
 
 import { useEffect } from "react";
 
+import { Button } from "@/shared/components/ui/button";
+
 export default function Error({
   error,
   retry,
@@ -14,27 +16,23 @@ export default function Error({
   }, [error]);
 
   return (
-    <section>
-      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
+    <section className="flex flex-col items-start gap-4 py-16">
+      <h1 className="title text-3xl font-semibold tracking-tight md:text-4xl">
         something broke
       </h1>
 
-      <p className="mb-4">
+      <p className="text-muted-foreground max-w-md">
         An unexpected error occurred. Try again, and if it keeps happening it is
         probably my fault.
       </p>
 
-      <button
-        type="button"
-        onClick={() => retry()}
-        className="underline decoration-neutral-400 decoration-[0.1em] underline-offset-2 transition-all dark:decoration-neutral-600"
-      >
+      <Button variant="outline" onClick={() => retry()} className="mt-2">
         try again
-      </button>
+      </Button>
 
       {error.digest ? (
-        <p className="mt-8 text-sm text-neutral-600 dark:text-neutral-400">
-          Error ID: {error.digest}
+        <p className="text-muted-foreground mt-4 font-mono text-xs">
+          {error.digest}
         </p>
       ) : null}
     </section>

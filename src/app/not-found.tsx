@@ -1,19 +1,28 @@
-import type { Metadata } from "next";
+import Link from "next/link";
 
-export const metadata: Metadata = {
+import { Button } from "@/shared/components/ui/button";
+
+export const metadata = {
   title: "404",
-  description: "The page you are looking for does not exist.",
-  robots: { index: false, follow: false },
+  robots: { index: false, follow: true },
 };
 
 export default function NotFound() {
   return (
-    <section>
-      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        404 - Page Not Found
+    <section className="flex flex-col items-start gap-4 py-16">
+      <p className="text-muted-foreground font-mono text-sm">404</p>
+
+      <h1 className="title text-3xl font-semibold tracking-tight md:text-4xl">
+        this page does not exist
       </h1>
 
-      <p className="mb-4">The page you are looking for does not exist.</p>
+      <p className="text-muted-foreground max-w-md">
+        The link is wrong, or I deleted something I probably should not have.
+      </p>
+
+      <Button variant="outline" render={<Link href="/" />} className="mt-2">
+        go home
+      </Button>
     </section>
   );
 }

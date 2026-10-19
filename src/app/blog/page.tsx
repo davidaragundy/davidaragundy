@@ -8,7 +8,8 @@ import {
   X_HANDLE,
 } from "@/shared/constants/app";
 
-import { Posts } from "@/features/blog/components/posts";
+import { PostsExplorer } from "@/features/blog/components/posts-explorer";
+import { getPostSummaries } from "@/features/blog/queries/get-posts";
 
 export const metadata: Metadata = {
   title: BLOG_TITLE,
@@ -31,14 +32,20 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Page() {
-  return (
-    <section>
-      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        the blog, or whatever
-      </h1>
+export default async function Page() {
+  const posts = await getPostSummaries();
 
-      <Posts />
+  return (
+    <section className="flex flex-col gap-10">
+      <header className="flex flex-col gap-3">
+        <h1 className="title text-4xl font-semibold tracking-tight md:text-5xl">
+          the blog, or whatever
+        </h1>
+
+        <p className="text-muted-foreground max-w-xl">{BLOG_DESCRIPTION}</p>
+      </header>
+
+      <PostsExplorer posts={posts} />
     </section>
   );
 }

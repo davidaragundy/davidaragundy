@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { cn } from "cn";
 
-import { Navbar } from "@/shared/components/navbar";
-import { Footer } from "@/shared/components/footer";
+import { SiteFooter } from "@/shared/components/site-footer";
+import { SiteHeader } from "@/shared/components/site-header";
 import {
   AUTHOR_NAME,
   BASE_URL,
@@ -14,7 +15,6 @@ import {
   SITE_NAME,
   X_HANDLE,
 } from "@/shared/constants/app";
-import { cx } from "@/shared/utils/cx";
 
 import "@/shared/styles/globals.css";
 
@@ -25,13 +25,12 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
   authors: [{ name: AUTHOR_NAME, url: BASE_URL }],
   creator: AUTHOR_NAME,
   alternates: {
     canonical: "/",
-    types: {
-      "application/rss+xml": `${BASE_URL}/rss`,
-    },
+    types: { "application/rss+xml": `${BASE_URL}/rss` },
   },
   openGraph: {
     title: SITE_NAME,
@@ -65,18 +64,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={cx(
-        "bg-white text-black dark:bg-black dark:text-white",
-        GeistSans.variable,
-        GeistMono.variable,
-      )}
+      className={cn("dark", GeistSans.variable, GeistMono.variable)}
     >
-      <body className="mx-4 mt-8 max-w-xl antialiased lg:mx-auto">
-        <main className="mt-6 flex min-w-0 flex-auto flex-col px-2 md:px-0">
-          <Navbar />
+      <body className="bg-background text-foreground flex min-h-dvh flex-col font-sans antialiased">
+        <SiteHeader />
+
+        <main className="mx-auto w-full max-w-5xl flex-1 px-6 py-12 md:py-16">
           {children}
-          <Footer />
         </main>
+
+        <SiteFooter />
 
         <Analytics />
         <SpeedInsights />
