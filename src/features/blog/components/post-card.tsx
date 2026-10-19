@@ -1,7 +1,9 @@
+import Image from "next/image";
 import Link from "next/link";
 import { cn } from "cn";
 
 import { Card } from "@/shared/components/ui/card";
+import { AUTHOR_NAME, AVATAR_URL } from "@/shared/constants/app";
 
 import type { PostSummary } from "@/features/blog/types/post-summary";
 import { formatDate } from "@/features/blog/utils/format-date";
@@ -47,5 +49,17 @@ export const PostCard = ({
     <p className="text-muted-foreground mt-auto pt-12 text-sm leading-5">
       {post.summary}
     </p>
+
+    <div className="mt-5 flex items-center gap-2 text-sm leading-5">
+      <Image
+        src={AVATAR_URL}
+        alt=""
+        width={24}
+        height={24}
+        className="size-6 rounded-full object-cover"
+      />
+
+      <span className="text-foreground">{AUTHOR_NAME}</span>
+    </div>
   </Card>
 );

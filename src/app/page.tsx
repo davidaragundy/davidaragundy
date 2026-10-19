@@ -65,14 +65,14 @@ export default async function Page() {
 
       {latestPosts.length > 0 ? (
         <section className="flex flex-col gap-6">
-          <div className="flex items-center justify-between gap-4">
-            <h2 className="text-muted-foreground text-sm font-medium tracking-wide uppercase">
-              Latest Posts
+          <div className="flex items-baseline justify-between gap-4">
+            <h2 className="text-2xl leading-8 font-[450] tracking-[-0.04em]">
+              Latest posts
             </h2>
 
             <Link
               href="/blog"
-              className="text-muted-foreground hover:text-foreground inline-flex items-center gap-1.5 text-sm transition-colors"
+              className="text-muted-foreground hover:text-foreground inline-flex cursor-pointer items-center gap-1.5 text-sm transition-colors"
             >
               All posts
               <ArrowRight className="size-3.5" />
