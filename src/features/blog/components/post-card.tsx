@@ -50,7 +50,7 @@ export const PostCard = ({
       {post.summary}
     </p>
 
-    <div className="mt-5 flex items-center gap-2 text-sm leading-5">
+    <div className="mt-6 flex items-center gap-3 text-sm leading-5">
       <Image
         src={AVATAR_URL}
         alt=""
