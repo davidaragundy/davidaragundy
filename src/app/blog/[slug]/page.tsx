@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
 import { notFound } from "next/navigation";
 
-import { Badge } from "@/shared/components/ui/badge";
 import { Separator } from "@/shared/components/ui/separator";
 import { JsonLd } from "@/shared/components/json-ld";
 import {
@@ -94,32 +92,35 @@ export default async function Page(props: PageProps<"/blog/[slug]">) {
         }}
       />
 
-      <Link
-        href="/blog"
-        className="text-muted-foreground hover:text-foreground inline-flex w-fit items-center gap-1.5 text-sm transition-colors"
+      <nav
+        aria-label="Breadcrumb"
+        className="text-muted-foreground flex items-center gap-2 text-sm"
       >
-        <ArrowLeft className="size-3.5" />
-        all posts
-      </Link>
+        <Link
+          href="/blog"
+          className="hover:text-foreground cursor-pointer transition-colors"
+        >
+          Blog
+        </Link>
 
-      <header className="mt-8 flex flex-col gap-4">
-        {post.metadata.tags.length > 0 ? (
-          <div className="flex flex-wrap gap-2">
-            {post.metadata.tags.map((tag) => (
-              <Badge key={tag} variant="secondary">
-                {tag}
-              </Badge>
-            ))}
-          </div>
+        {post.metadata.tags[0] ? (
+          <>
+            <span aria-hidden>/</span>
+            <span>{post.metadata.tags[0]}</span>
+          </>
         ) : null}
+      </nav>
 
-        <h1 className="title text-3xl font-semibold tracking-tight md:text-4xl">
+      <header className="mt-6 flex flex-col gap-6">
+        <h1 className="title text-4xl leading-[1.1] font-semibold tracking-tight md:text-5xl">
           {title}
         </h1>
 
-        <p className="text-muted-foreground text-lg leading-8">{summary}</p>
+        <p className="text-muted-foreground text-xl leading-8 text-balance">
+          {summary}
+        </p>
 
-        <div className="mt-2 flex items-center gap-2 text-sm">
+        <div className="flex items-center gap-2.5 text-sm">
           <Image
             src={AVATAR_URL}
             alt=""

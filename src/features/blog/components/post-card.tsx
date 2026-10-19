@@ -1,12 +1,7 @@
 import Link from "next/link";
+import { cn } from "cn";
 
-import { Badge } from "@/shared/components/ui/badge";
-import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/shared/components/ui/card";
+import { Card } from "@/shared/components/ui/card";
 
 import type { PostSummary } from "@/features/blog/types/post-summary";
 import { formatDate } from "@/features/blog/utils/format-date";
@@ -14,39 +9,43 @@ import { formatDate } from "@/features/blog/utils/format-date";
 export const PostCard = ({
   post,
   showDate = true,
+  className,
 }: {
   post: PostSummary;
   showDate?: boolean;
+  className?: string;
 }) => (
-  <Card className="group hover:border-border hover:bg-accent/40 relative h-full gap-0 transition-colors">
-    <CardHeader className="gap-3">
-      <div className="flex flex-wrap items-center gap-2">
-        {showDate ? (
-          <time
-            dateTime={post.publishedAt}
-            className="text-muted-foreground text-xs tabular-nums"
-          >
-            {formatDate(post.publishedAt)}
-          </time>
-        ) : null}
+  <Card
+    className={cn(
+      "group hover:bg-card-hover relative flex h-full flex-col gap-0 rounded-xl p-6 transition-colors duration-200 sm:p-8",
+      className,
+    )}
+  >
+    <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+      {showDate ? (
+        <time dateTime={post.publishedAt} className="text-foreground">
+          {formatDate(post.publishedAt)}
+        </time>
+      ) : null}
 
-        {post.tags.map((tag) => (
-          <Badge key={tag} variant="secondary">
-            {tag}
-          </Badge>
-        ))}
-      </div>
+      {post.tags.map((tag) => (
+        <span key={tag} className="text-muted-foreground">
+          {tag}
+        </span>
+      ))}
+    </div>
 
-      <CardTitle className="text-lg leading-snug tracking-tight text-balance">
-        <Link
-          href={`/blog/${post.slug}`}
-          className="after:absolute after:inset-0"
-        >
-          {post.title}
-        </Link>
-      </CardTitle>
+    <h3 className="mt-5 text-2xl leading-tight font-semibold tracking-tight text-balance">
+      <Link
+        href={`/blog/${post.slug}`}
+        className="cursor-pointer after:absolute after:inset-0"
+      >
+        {post.title}
+      </Link>
+    </h3>
 
-      <CardDescription className="leading-6">{post.summary}</CardDescription>
-    </CardHeader>
+    <p className="text-muted-foreground mt-auto pt-10 text-sm leading-6">
+      {post.summary}
+    </p>
   </Card>
 );

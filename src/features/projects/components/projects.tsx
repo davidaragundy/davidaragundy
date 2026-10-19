@@ -1,31 +1,24 @@
 import { ArrowUpRight } from "lucide-react";
 
-import {
-  Card,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/shared/components/ui/card";
+import { Card } from "@/shared/components/ui/card";
 
 import { projects } from "@/features/projects/data/projects";
 
 const linkClassName =
-  "inline-flex items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground";
+  "inline-flex cursor-pointer items-center gap-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground";
 
 export const Projects = () => (
   <ul className="grid gap-4 sm:grid-cols-2">
     {projects.map(({ name, description, url, repository }) => (
       <li key={url}>
-        <Card className="h-full">
-          <CardHeader className="gap-2">
-            <CardTitle className="text-lg tracking-tight">{name}</CardTitle>
-            <CardDescription className="leading-6">
-              {description}
-            </CardDescription>
-          </CardHeader>
+        <Card className="hover:bg-card-hover flex h-full flex-col gap-0 rounded-xl p-6 transition-colors duration-200 sm:p-8">
+          <h2 className="text-xl font-semibold tracking-tight">{name}</h2>
 
-          <CardFooter className="gap-4">
+          <p className="text-muted-foreground mt-3 text-sm leading-6">
+            {description}
+          </p>
+
+          <div className="mt-auto flex flex-wrap items-center gap-x-5 gap-y-2 pt-8">
             <a
               href={url}
               target="_blank"
@@ -43,11 +36,11 @@ export const Projects = () => (
                 rel="noopener noreferrer"
                 className={linkClassName}
               >
-                source
+                Source
                 <ArrowUpRight className="size-3.5" />
               </a>
             ) : null}
-          </CardFooter>
+          </div>
         </Card>
       </li>
     ))}

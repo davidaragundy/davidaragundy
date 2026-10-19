@@ -51,7 +51,7 @@ export const PostsExplorer = ({ posts }: { posts: PostSummary[] }) => {
               variant={tag === activeTag ? "secondary" : "ghost"}
               aria-pressed={tag === activeTag}
               onClick={() => setActiveTag(tag)}
-              className="rounded-full"
+              className="cursor-pointer rounded-full"
             >
               {tag}
             </Button>
@@ -68,7 +68,7 @@ export const PostsExplorer = ({ posts }: { posts: PostSummary[] }) => {
               type="search"
               value={query}
               onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search..."
+              placeholder="Search…"
               aria-label="Search posts"
               className="rounded-full pl-9"
             />
@@ -81,7 +81,7 @@ export const PostsExplorer = ({ posts }: { posts: PostSummary[] }) => {
               aria-pressed={view === "grid"}
               aria-label="Grid view"
               onClick={() => setView("grid")}
-              className="rounded-full"
+              className="cursor-pointer rounded-full"
             >
               <LayoutGrid />
             </Button>
@@ -92,7 +92,7 @@ export const PostsExplorer = ({ posts }: { posts: PostSummary[] }) => {
               aria-pressed={view === "timeline"}
               aria-label="Timeline view"
               onClick={() => setView("timeline")}
-              className="rounded-full"
+              className="cursor-pointer rounded-full"
             >
               <Rows3 />
             </Button>
@@ -102,7 +102,7 @@ export const PostsExplorer = ({ posts }: { posts: PostSummary[] }) => {
             size="icon"
             variant="outline"
             render={<a href="/rss" aria-label="RSS feed" />}
-            className="rounded-full"
+            className="cursor-pointer rounded-full"
           >
             <Rss />
           </Button>
@@ -112,13 +112,13 @@ export const PostsExplorer = ({ posts }: { posts: PostSummary[] }) => {
       {visiblePosts.length === 0 ? (
         <div className="border-border rounded-xl border border-dashed py-16 text-center">
           <p className="text-muted-foreground text-sm">
-            Nothing here. Try another search.
+            No posts match that search.
           </p>
         </div>
       ) : view === "grid" ? (
         <div className="grid gap-4 sm:grid-cols-2">
           {visiblePosts.map((post) => (
-            <PostCard key={post.slug} post={post} />
+            <PostCard key={post.slug} post={post} className="min-h-72" />
           ))}
         </div>
       ) : (

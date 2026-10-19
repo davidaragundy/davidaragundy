@@ -41,7 +41,7 @@ export const PROJECTS_DESCRIPTION =
 export const SITE_LOCALE = "en_US";
 
 export const navItems: { href: Route; name: string }[] = [
-  { href: "/", name: "home" },
-  { href: "/blog", name: "blog" },
-  { href: "/projects", name: "projects" },
+  { href: "/", name: "Home" },
+  { href: "/blog", name: "Blog" },
+  { href: "/projects", name: "Projects" },
 ];

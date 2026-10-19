@@ -8,12 +8,12 @@ import {
 } from "@/shared/constants/app";
 
 const links = [
-  { href: "/rss", label: "rss" },
-  { href: GITHUB_URL, label: "github", rel: "me noopener noreferrer" },
-  { href: X_URL, label: "x", rel: "me noopener noreferrer" },
-  { href: LINKEDIN_URL, label: "linkedin", rel: "me noopener noreferrer" },
-  { href: `mailto:${EMAIL}`, label: "email" },
-  { href: REPOSITORY_URL, label: "view source", rel: "noopener noreferrer" },
+  { href: "/rss", label: "RSS" },
+  { href: GITHUB_URL, label: "GitHub", rel: "me noopener noreferrer" },
+  { href: X_URL, label: "X", rel: "me noopener noreferrer" },
+  { href: LINKEDIN_URL, label: "LinkedIn", rel: "me noopener noreferrer" },
+  { href: `mailto:${EMAIL}`, label: "Email" },
+  { href: REPOSITORY_URL, label: "View Source", rel: "noopener noreferrer" },
 ];
 
 export const SiteFooter = () => (
