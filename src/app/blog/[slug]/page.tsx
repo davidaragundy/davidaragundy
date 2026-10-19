@@ -76,57 +76,57 @@ export default async function Page(props: PageProps<"/blog/[slug]">) {
   const readTime = getReadTime(post.content);
 
   return (
-    <div className="grid gap-12 lg:grid-cols-[minmax(0,42rem)_minmax(0,11rem)] lg:justify-center">
-      <section className="mx-auto flex w-full max-w-2xl flex-col lg:mx-0">
-        <JsonLd
-          data={{
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            headline: title,
-            datePublished: publishedAt,
-            dateModified: publishedAt,
-            description: summary,
-            keywords: post.metadata.tags,
-            image: `${BASE_URL}/blog/${slug}/opengraph-image`,
-            url: `${BASE_URL}/blog/${slug}`,
-            author: PERSON_REFERENCE,
-            publisher: PERSON_REFERENCE,
-            mainEntityOfPage: {
-              "@type": "WebPage",
-              "@id": `${BASE_URL}/blog/${slug}`,
-            },
-          }}
-        />
+    <section className="mx-auto flex w-full max-w-2xl flex-col">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: title,
+          datePublished: publishedAt,
+          dateModified: publishedAt,
+          description: summary,
+          keywords: post.metadata.tags,
+          image: `${BASE_URL}/blog/${slug}/opengraph-image`,
+          url: `${BASE_URL}/blog/${slug}`,
+          author: PERSON_REFERENCE,
+          publisher: PERSON_REFERENCE,
+          mainEntityOfPage: {
+            "@type": "WebPage",
+            "@id": `${BASE_URL}/blog/${slug}`,
+          },
+        }}
+      />
 
-        <nav
-          aria-label="Breadcrumb"
-          className="text-muted-foreground flex items-center gap-2 text-sm"
+      <nav
+        aria-label="Breadcrumb"
+        className="text-muted-foreground flex items-center gap-2 text-sm"
+      >
+        <Link
+          href="/blog"
+          className="hover:text-foreground cursor-pointer transition-colors"
         >
-          <Link
-            href="/blog"
-            className="hover:text-foreground cursor-pointer transition-colors"
-          >
-            Blog
-          </Link>
+          Blog
+        </Link>
 
-          {post.metadata.tags[0] ? (
-            <>
-              <span aria-hidden>/</span>
-              <span>{post.metadata.tags[0]}</span>
-            </>
-          ) : null}
-        </nav>
+        {post.metadata.tags[0] ? (
+          <>
+            <span aria-hidden>/</span>
+            <span>{post.metadata.tags[0]}</span>
+          </>
+        ) : null}
+      </nav>
 
-        <header className="mt-6 flex flex-col gap-6">
-          <h1 className="title text-4xl leading-[1.1] font-[450] tracking-[-0.06em] md:text-5xl">
-            {title}
-          </h1>
+      <header className="mt-6 flex flex-col gap-6">
+        <h1 className="title text-4xl leading-[1.1] font-[450] tracking-[-0.06em] md:text-5xl">
+          {title}
+        </h1>
 
-          <p className="text-muted-foreground text-lg leading-7 text-balance">
-            {summary}
-          </p>
+        <p className="text-muted-foreground text-lg leading-7 text-balance">
+          {summary}
+        </p>
 
-          <div className="flex items-center gap-3 text-sm">
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
+          <div className="flex items-center gap-3">
             <Image
               src={AVATAR_URL}
               alt=""
@@ -138,29 +138,15 @@ export default async function Page(props: PageProps<"/blog/[slug]">) {
             <span className="text-foreground">{AUTHOR_NAME}</span>
           </div>
 
-          <PostMeta
-            publishedAt={publishedAt}
-            readTime={readTime}
-            slug={slug}
-            className="lg:hidden"
-          />
-        </header>
+          <PostMeta publishedAt={publishedAt} readTime={readTime} slug={slug} />
+        </div>
+      </header>
 
-        <Separator className="my-10" />
+      <Separator className="my-10" />
 
-        <article className="prose">
-          <CustomMDX source={post.content} />
-        </article>
-      </section>
-
-      <aside className="hidden lg:block">
-        <PostMeta
-          publishedAt={publishedAt}
-          readTime={readTime}
-          slug={slug}
-          className="sticky top-24 flex-col items-start gap-y-3"
-        />
-      </aside>
-    </div>
+      <article className="prose">
+        <CustomMDX source={post.content} />
+      </article>
+    </section>
   );
 }
